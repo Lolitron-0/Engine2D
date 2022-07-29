@@ -159,7 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CallbackDelegate.h" />
-    <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="Collidable.hpp" />
+    <ClInclude Include="ColliderSystem.hpp" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Dino.hpp" />
     <ClInclude Include="Drawable.h" />

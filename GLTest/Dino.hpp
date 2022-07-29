@@ -3,7 +3,7 @@
 #include <GameObject.hpp>
 #include <Collider.hpp>
 
-#define GRAVITY 0.01
+#define GRAVITY 0.08
 
 class Dino : public GameObject, COLLIDABLE_INHERITANCE(Dino)
 {

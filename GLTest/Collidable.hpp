@@ -2,12 +2,19 @@
 #include <Utils.hpp>
 #include <functional>
 
+
+
+class CollidableBase
+{
+
+};
+
 /// <summary>
 /// Note: DO NOT inherit this class directly, use COLLIDABLE_INHERITANCE macro instead to provide correct CRTP usage
 /// </summary>
 /// <typeparam name="Derived">This is the type of your class (which you inherit)</typeparam>
 template <class Derived>
-class Collidable
+class Collidable : public CollidableBase
 {
 public:
 	
@@ -23,10 +30,14 @@ public:
 	}
 
 	template <class OtherDerived>
-	bool detect(const Collidable<OtherDerived>& other);
+	bool detect(const Collidable<OtherDerived>& other) {
+		return (this->mBox.intersects(other.mBox))
+	}
 
 	template <class OtherDerived>
 	void resolve(Collidable<OtherDerived>& other) {
+		mpVelosity.get()->x =0;
+		mpVelosity.get()->y =0;
 		mUserReaction();
 	}
 
