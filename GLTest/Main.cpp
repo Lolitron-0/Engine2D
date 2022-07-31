@@ -1,8 +1,8 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
 #include "Utils.hpp"
-#include "RectangleShape.h"
-#include "Window.h"
+#include "RectangleShape.hpp"
+#include "Window.hpp"
 #include "Line.h"
 #include <Dino.hpp>
 
