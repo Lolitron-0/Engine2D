@@ -1,4 +1,4 @@
-#include "RectangleShape.h"
+#include "RectangleShape.hpp"
 
 
 RectangleShape::RectangleShape(float x, float y, float width, float height)

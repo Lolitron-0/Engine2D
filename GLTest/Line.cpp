@@ -1,4 +1,4 @@
-#include "Line.h"
+#include "Line.hpp"
 
 Line::Line(Vector2<GLfloat> start, Vector2<GLfloat> end)
 	:Drawable({255,255,255})

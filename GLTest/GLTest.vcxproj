@@ -94,6 +94,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\ClarVik\source\repos\Engine2D\GLTest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,6 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\ClarVik\source\repos\Engine2D\GLTest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,6 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,12 +152,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Dino.inl">
+    <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="ColliderSystem.cpp" />
+    <ClCompile Include="Dino.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectSystem.cpp" />
+    <ClCompile Include="KeyListener.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PhysicBodySystem.cpp" />
+    <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="RectangleShape.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -162,17 +173,22 @@
     <ClInclude Include="Collidable.hpp" />
     <ClInclude Include="ColliderSystem.hpp" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Defines.hpp" />
     <ClInclude Include="Dino.hpp" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="EngineHeader.hpp" />
+    <ClInclude Include="Floor.hpp" />
     <ClInclude Include="GameObject.hpp" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="RectangleShape.h" />
+    <ClInclude Include="GameObjectSystem.hpp" />
+    <ClInclude Include="KeyListener.hpp" />
+    <ClInclude Include="Line.hpp" />
+    <ClInclude Include="ObjectSystemBase.hpp" />
+    <ClInclude Include="PhysicBodySystem.hpp" />
+    <ClInclude Include="PhysicBody.hpp" />
+    <ClInclude Include="RectangleShape.hpp" />
     <ClInclude Include="Utils.hpp" />
     <ClInclude Include="Vector2.hpp" />
-    <ClInclude Include="Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

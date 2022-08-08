@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Window.hpp"
 #include "Utils.hpp"
 
 Window::Window(GLint width, GLint height, const char* name) :

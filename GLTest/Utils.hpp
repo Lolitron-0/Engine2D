@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <Vector2.hpp>
+#include <algorithm>
+#include <cassert>
+
 
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 500
@@ -11,7 +14,7 @@
 
 
 
-template <class T>
+template <typename T>
 class Rect
 {
 public:
@@ -24,8 +27,36 @@ public:
 		:left(x), top(y), width(w), height(h)
 	{}
 
-	template <class T>
-	bool intersects(const Rect<T>& other, Rect<T>& intersection = Rect<T>()) {
+	template <typename U>
+	explicit Rect(const Rect<U>& other) :
+		left(static_cast<T> (other.left)),
+		top(static_cast<T> (other.top)),
+		width(static_cast<T> (other.width)),
+		height(static_cast<T> (other.height))
+	{}
+
+	void setPosition(const Vector2<T>& position)
+	{
+		this->left = position.x;
+		this->top = position.y;
+	}
+	void setPosition(T x, T y)
+	{
+		this->left = x;
+		this->top = y;
+	}
+
+	bool intersects(const Rect<T>& other) const
+	{
+		T intL = std::max(left, other.left);
+		T intR = std::min(left + width, other.left + other.width);
+		T intT = std::max(top, other.top);
+		T intB = std::min(top + height, other.top + other.height);
+		return intR - intL > 0 && intB - intT > 0;
+	}
+
+	bool intersects(const Rect<T>& other, Rect<T>& intersection) const
+	{
 		T intL = std::max(left, other.left);
 		T intR = std::min(left + width, other.left + other.width);
 		T intT = std::max(top, other.top);
@@ -44,10 +75,10 @@ public:
 			intersection = Rect<T>();
 			return false;
 		}
-
 	}
 
-	template<class T> bool contains(Vector2<T> point) {
+	bool contains(Vector2<T> point) const
+	{
 		return point.x >= left &&
 			point.x <= left + width &&
 			point.y >= top &&
@@ -59,6 +90,59 @@ public:
 	T width;
 	T height;
 };
+
+class Math
+{
+public:
+	//returns if point [c] is higher (OR EQUAL) than [a] and lower (OR EQUAL) than [b] or vice versa
+	template <typename T>
+	static bool isBetween(T a, T b, T c)
+	{
+		return c >= std::min(a, b) && c <= std::max(a, b);
+	}
+
+	//returns if point [c] is higher than [a] and lower than [b] or vice versa
+	template <typename T>
+	static bool isBetweenStrict(T a, T b, T c)
+	{
+		return c > std::min(a, b) && c < std::max(a, b);
+	}
+};
+
+template<typename T>
+class Singleton
+{
+public:
+	static T& getInstance()
+	{
+		if (!Singleton::instance)
+			Singleton::instance = createInstance();
+		return *(Singleton::instance);
+	}
+protected:
+	inline explicit Singleton() 
+	{
+		assert(!Singleton::instance);
+		Singleton::instance = static_cast<T*>(this);
+	}
+
+	inline ~Singleton() 
+	{
+		Singleton::instance = 0;
+	}
+
+private:
+
+	static T* createInstance()  {return new T(); }
+
+	static T* instance;
+
+	inline explicit Singleton(Singleton const&) {}
+	inline Singleton& operator=(Singleton const&) { return *this; }
+};
+
+template<typename T>
+typename T* Singleton<T>::instance = 0;
 
 
 

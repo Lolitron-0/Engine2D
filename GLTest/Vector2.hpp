@@ -32,19 +32,44 @@ public:
 		return *this;
 	}
 
-	template <class T>
-	Vector2<T>& operator+(const Vector2<T>& other)
-	{
-		return Vector2<T>(this->x + other.x, this->y + other.y);
-	}
-	
-	template <class T>
-	Vector2<T>& operator-(const Vector2<T>& other)
-	{
-		return Vector2<T>(this->x - other.x, this->y - other.y);
-	}
-
 	T x;
 	T y;
 };
 
+template <class T>
+Vector2<T> operator+(const Vector2<T>& v1, const Vector2<T>& v2)
+{
+	return Vector2<T>(v1.x + v2.x, v1.y + v2.y);
+}
+template <class T>
+Vector2<T> operator+(const Vector2<T>& v, T val)
+{
+	return Vector2<T>(v.x + val, v.y + val);
+}
+
+template <class T>
+Vector2<T> operator-(const Vector2<T>& v1, const Vector2<T>& v2)
+{
+	return Vector2<T>(v1.x - v2.x, v1.y - v2.y);
+}
+template <class T>
+Vector2<T> operator-(const Vector2<T>& v, T val)
+{
+	return Vector2<T>(v.x - val, v.y - val);
+}
+template <class T>
+Vector2<T> operator-(T val, const Vector2<T>& v)
+{
+	return Vector2<T>(val-v.x, val-v.y);
+}
+
+template <class T>
+Vector2<T> operator*(const Vector2<T>& v1, const Vector2<T>& v2)
+{
+	return Vector2<T>(v1.x * v2.x, v1.y * v2.y);
+}
+template <class T>
+Vector2<T> operator*(const Vector2<T>& v, T val)
+{
+	return Vector2<T>(v.x * val, v.y * val);
+}

@@ -1,55 +1,51 @@
 #pragma once
 #include <Utils.hpp>
+#include <GameObject.hpp>
 #include <functional>
+#include <iostream>
+#include <any>
 
+HAS_SYSTEM(ColliderSystem)
 
-
-class CollidableBase
-{
-
-};
-
-/// <summary>
-/// Note: DO NOT inherit this class directly, use COLLIDABLE_INHERITANCE macro instead to provide correct CRTP usage
-/// </summary>
-/// <typeparam name="Derived">This is the type of your class (which you inherit)</typeparam>
-template <class Derived>
-class Collidable : public CollidableBase
+class Collidable
 {
 public:
-	
+
 	/// <summary>
 	/// When an object is inherited from Collidable it is automatically addded to Collidable pool
 	/// /// </summary>
-	/// <param name="box">The collider box in absolute coords</param>
-	/// <param name="velosityPtr">Pointer to velosity from GameObject to react on collisions properly</param>
-	Collidable(const Rect<float>& box, Vector2<float>* velosityPtr)
-		:mBox(box)
-	{
-		mpVelosity.reset(velosityPtr);
-	}
+	/// <param name="thisObject">Pass [this] keyword here to react on collisions properly</param>
+	/// <param name="box">The collider box in local coords</param>
 
-	template <class OtherDerived>
-	bool detect(const Collidable<OtherDerived>& other) {
-		return (this->mBox.intersects(other.mBox))
-	}
+	Collidable(GameObject* thisObject, const Rect<float>& box);
+	/// <summary>
+	/// When an object is inherited from Collidable it is automatically addded to Collidable pool
+	/// /// </summary>
+	/// <param name="thisObject">Pass [this] keyword here to react on collisions properly</param>
+	/// <param name="box">The collider box in local coords</param>
+	/// <param name="layer">z-index of a collidable, different layered colliders do not interact</param>
+	/// <param name="name">Name of this collidable object. It is needed to divide objects in resolve method</param>
+	Collidable(GameObject* thisObject, const Rect<float>& box, int layer, std::string className);
 
-	template <class OtherDerived>
-	void resolve(Collidable<OtherDerived>& other) {
-		mpVelosity.get()->x =0;
-		mpVelosity.get()->y =0;
-		mUserReaction();
-	}
+	void updateGlobalHitbox();
+
+	void systemResolve(Collidable& other);
+
+	bool detect(const Collidable& other);
+
+	virtual void resolve(Collidable& other) = 0;
+
+	int getLayer();
+	//int getUserData();
+
+protected:
+	Rect<float> mLocalBox; 
+	int mLayer;
+	std::string mName;
 
 private:
+	void init(GameObject* );
 
-	Rect<float> mBox;
-	bool mIsTrigger;
-	std::unique_ptr<Vector2<float>> mpVelosity;
-	std::function<void()> mUserReaction;
+	Rect<float> mGlobalBox; 
+	std::shared_ptr<GameObject> mpClient;
 };
-
-//Macro to use CRTP correctly. [Type] is a derived class
-#define COLLIDABLE_INHERITANCE(Type) public Collidable<Type>
-
-//CRTP in Collider and GameObject to pass in resolve and make switch by type

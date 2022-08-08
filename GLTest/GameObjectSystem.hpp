@@ -1,17 +1,13 @@
 #pragma once
-#include <vector>
 #include <iostream>
+#include <vector>
 #include <ObjectSystemBase.hpp>
-#include <Collidable.hpp>
+#include <GameObject.hpp>
 
-class ColliderSystem : public ObjectSystemBase<Collidable,ColliderSystem>
+class GameObjectSystem : public ObjectSystemBase<GameObject,GameObjectSystem>
 {
 public:
 	// Унаследовано через ObjectSystemBase
 	virtual void processAll() override;
-
-	ColliderSystem();
-private:
 };
-
 
