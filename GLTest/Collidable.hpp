@@ -39,13 +39,13 @@ public:
 	//int getUserData();
 
 protected:
-	Rect<float> mLocalBox; 
+	Rect<float> mLocalBox;
 	int mLayer;
 	std::string mName;
 
 private:
 	void init(GameObject* );
 
-	Rect<float> mGlobalBox; 
+	Rect<float> mGlobalBox;
 	std::shared_ptr<GameObject> mpClient;
 };
