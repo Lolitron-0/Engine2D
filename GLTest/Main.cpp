@@ -3,6 +3,7 @@
 #include <EngineHeader.hpp>
 #include <Dino.hpp>
 #include <Floor.hpp>
+#include <Cactus.hpp>
 
 void errFun(int code, const char* desc)
 {
@@ -16,21 +17,20 @@ void initCallbacks(Window& window)
 
 int main()
 {
-	GLFW_KEY_0;
 	glfwInit();
 
 	glfwSetErrorCallback(errFun);
 
 	Dino dino(100, 0);
+	Cactus cactus(SCREEN_WIDTH - 200, 0);
 	Floor floor;
 
 	glLoadIdentity();
 	glOrtho(0, 1, 1, 0, -1, 1);
 
-	std::shared_ptr<Window> window(new Window(SCREEN_WIDTH, SCREEN_HEIGHT, "awd"));
+	//std::shared_ptr<Window> window(new Window(SCREEN_WIDTH, SCREEN_HEIGHT, "awd"));
 
-
-	while (window->isOpen())
+	while (Window::getInstance().isOpen())
 	{
 		glfwPollEvents();
 
@@ -39,16 +39,17 @@ int main()
 
 
 		dino.update();
-
+		cactus.update();
+		GameObjectSystem::getInstance().processAll();
 		PhysicBodySystem::getInstance().processAll();
 		ColliderSystem::getInstance().processAll();
-		GameObjectSystem::getInstance().processAll();
 
 		dino.draw();
+		cactus.draw();
 
 		floor.draw();
 
-		window->display();
+		Window::getInstance().display();
 	}
 
 	glfwTerminate();

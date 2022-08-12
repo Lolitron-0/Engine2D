@@ -20,47 +20,47 @@ class Rect
 public:
 
 	Rect()
-		:left(0), top(0), width(0), height(0)
+		:x(0), y(0), width(0), height(0)
 	{}
 
 	Rect(T x, T y, T w, T h)
-		:left(x), top(y), width(w), height(h)
+		:x(x), y(y), width(w), height(h)
 	{}
 
 	template <typename U>
 	explicit Rect(const Rect<U>& other) :
-		left(static_cast<T> (other.left)),
-		top(static_cast<T> (other.top)),
+		x(static_cast<T> (other.x)),
+		y(static_cast<T> (other.y)),
 		width(static_cast<T> (other.width)),
 		height(static_cast<T> (other.height))
 	{}
 
 	void setPosition(const Vector2<T>& position)
 	{
-		this->left = position.x;
-		this->top = position.y;
+		this->x = position.x;
+		this->y = position.y;
 	}
 	void setPosition(T x, T y)
 	{
-		this->left = x;
-		this->top = y;
+		this->x = x;
+		this->y = y;
 	}
 
 	bool intersects(const Rect<T>& other) const
 	{
-		T intL = std::max(left, other.left);
-		T intR = std::min(left + width, other.left + other.width);
-		T intT = std::max(top, other.top);
-		T intB = std::min(top + height, other.top + other.height);
+		T intL = std::max(x, other.x);
+		T intR = std::min(x + width, other.x + other.width);
+		T intT = std::max(y, other.y);
+		T intB = std::min(y + height, other.y + other.height);
 		return intR - intL > 0 && intB - intT > 0;
 	}
 
 	bool intersects(const Rect<T>& other, Rect<T>& intersection) const
 	{
-		T intL = std::max(left, other.left);
-		T intR = std::min(left + width, other.left + other.width);
-		T intT = std::max(top, other.top);
-		T intB = std::min(top + height, other.top + other.height);
+		T intL = std::max(x, other.x);
+		T intR = std::min(x + width, other.x + other.width);
+		T intT = std::max(y, other.y);
+		T intB = std::min(y + height, other.y + other.height);
 
 		if (intR - intL > 0 && intB - intT > 0) {
 			intersection = Rect<T>(
@@ -79,14 +79,14 @@ public:
 
 	bool contains(Vector2<T> point) const
 	{
-		return point.x >= left &&
-			point.x <= left + width &&
-			point.y >= top &&
-			point.y <= top + height;
+		return point.x >= x &&
+			point.x <= x + width &&
+			point.y >= y &&
+			point.y <= y + height;
 	}
 
-	T top;
-	T left;
+	T y;
+	T x;
 	T width;
 	T height;
 };
@@ -131,10 +131,8 @@ protected:
 		Singleton::instance = 0;
 	}
 
-private:
-
 	static T* createInstance()  {return new T(); }
-
+private:
 	static T* instance;
 
 	inline explicit Singleton(Singleton const&) {}
@@ -144,19 +142,5 @@ private:
 template<typename T>
 typename T* Singleton<T>::instance = 0;
 
-
-
-//convert screen coords to gl coords (0..1)
-template<class T> inline Vector2<T> screenToGl(Vector2<T>const& p) {
-	return Vector2<T>(p.x / SCREEN_WIDTH, p.y / SCREEN_HEIGHT);
-}
-//convert screen x to gl x (0..1)
-inline float screenToGlX(float v) {
-	return v / SCREEN_WIDTH;
-}
-//convert screen y to gl y (0..1)
-inline float screenToGlY(float v) {
-	return v / SCREEN_HEIGHT;
-}
 
 #endif

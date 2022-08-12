@@ -6,7 +6,6 @@ HAS_SYSTEM(GameObjectSystem)
 
 class GameObject
 {
-
 public:
 	GameObject() = default;
 
@@ -19,14 +18,13 @@ public:
 	//will be called every frame
 	virtual void update() = 0;
 
-	void setPosition(const Vector2<float>& position);
+	void setPosition(const Vector2<float>& position);	
 	Vector2<float> getPosition();
 
 	void setVelocity(const Vector2<float>& velocity);
 	Vector2<float> getVelocity();
 
 protected:
-
 	Vector2<float> mPosition;
 	Vector2<float> mVelocity;
 

@@ -3,18 +3,24 @@
 
 #define GRAVITY 0.08
 
-class Dino : public GameObject, PhysicBody, Collidable
+class Dino : public GameObject, PhysicBody, Collidable, KeyListener
 {
 public:
 	Dino(float, float);
-
+	
 	void draw() override;
 	void update() override;
 
 private:
-	RectangleShape mRect;
 
 	// Унаследовано через Collidable
 	virtual void resolve(Collidable& other) override;
+
+	// Унаследовано через KeyListener
+	virtual void onKeyDown(const KeyEventArgs& args) override;
+	virtual void onKeyUp(const KeyEventArgs& args) override;
+
+	RectangleShape mRect;
+	bool mOnGround{false};
 };
 

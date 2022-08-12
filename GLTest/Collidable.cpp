@@ -2,15 +2,8 @@
 #include <ColliderSystem.hpp>
 
 
-Collidable::Collidable(GameObject* thisObject, const Rect<float>& box)
-	:mLocalBox(box), mLayer(0), mName("")
-{
-	init(thisObject);
-}
-
-
-Collidable::Collidable(GameObject* thisObject, const Rect<float>& box, int layer, std::string name)
-	:mLocalBox(box), mLayer(layer), mName(name)
+Collidable::Collidable(GameObject* thisObject, const Rect<float>& box, bool isStatic, int layer, std::string name)
+	:mLocalBox(box), mLayer(layer), mName(name), mStatic(isStatic)
 {
 	init(thisObject);
 }
@@ -18,14 +11,15 @@ Collidable::Collidable(GameObject* thisObject, const Rect<float>& box, int layer
 void Collidable::updateGlobalHitbox()
 {
 	mGlobalBox = {
-		mLocalBox.left + mpClient->getPosition().x,
-		mLocalBox.top + mpClient->getPosition().y ,
+		mLocalBox.x + mpClient->getPosition().x,
+		mLocalBox.y + mpClient->getPosition().y ,
 	mLocalBox.width,
 	mLocalBox.height};
 }
 
 void Collidable::systemResolve(Collidable& other)
 {
+	//TODO: bump
 	mpClient->setVelocity({ 0,0 });
 	other.mpClient->setVelocity({ 0,0 });
 }
@@ -37,6 +31,16 @@ bool Collidable::detect(const Collidable& other) {
 int Collidable::getLayer()
 {
 	return mLayer;
+}
+
+std::string Collidable::getName()
+{
+	return mName;
+}
+
+bool Collidable::isStatic()
+{
+	return mStatic;
 }
 
 void Collidable::init(GameObject* thisObject)

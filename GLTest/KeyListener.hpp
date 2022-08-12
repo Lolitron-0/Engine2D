@@ -1,13 +1,21 @@
 #pragma once
 #include <GameObject.hpp>
 
-HAS_SYSTEM(KeyListenerSystem)
+struct KeyEventArgs
+{
+public:
+	int key;
+	int mods;
+};
 
 class KeyListener
 {
 public:
+	KeyListener();
+
 	//TODO: non-GLFW keys
-	void onKeyDown(int key, int mods);
+	virtual void onKeyDown(const KeyEventArgs& args)=0;
+	virtual void onKeyUp(const KeyEventArgs& args)=0;
 private:
 
 };
