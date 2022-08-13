@@ -6,6 +6,7 @@
 #include <Vector2.hpp>
 #include <algorithm>
 #include <cassert>
+#include <GLFW/glfw3.h>
 
 
 #define SCREEN_WIDTH 1000
@@ -45,6 +46,11 @@ public:
 		this->x = x;
 		this->y = y;
 	}
+
+	Vector2<T> getTopLeft() const { return { x,y }; }
+	Vector2<T> getBottomLeft() const { return { x,y+height }; }
+	Vector2<T> getBottomRight() const { return { x+width,y+height }; }
+	Vector2<T> getTopRight() const { return { x+width,y }; }
 
 	bool intersects(const Rect<T>& other) const
 	{
@@ -89,6 +95,7 @@ public:
 	T x;
 	T width;
 	T height;
+
 };
 
 class Math
@@ -107,6 +114,21 @@ public:
 	{
 		return c > std::min(a, b) && c < std::max(a, b);
 	}
+
+	template <typename T>
+	static bool isOnSegment(const Vector2<T>& a, const Vector2<T>& b, const Vector2<float>& point)
+	{
+		return (point.x - a.x) * (b.y - a.y) - (point.y - a.y) * (b.x - a.x) == 0 &&
+			(point.x >= a.x &&
+				b.x >= point.x || point.x >= b.x && a.x >= point.x);
+	}
+
+	template <typename T>
+	static bool length2D(const Vector2<T>& a, const Vector2<T>& b)
+	{
+		return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+	}
+
 };
 
 template<typename T>
@@ -141,6 +163,7 @@ private:
 
 template<typename T>
 typename T* Singleton<T>::instance = 0;
+
 
 
 #endif

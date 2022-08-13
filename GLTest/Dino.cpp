@@ -16,6 +16,8 @@ void Dino::resolve(Collidable& other)
 {
 	if (other.getName() == "floor")
 		this->mOnGround = true;
+	//else if (other.getName() == "cactus")
+	//	std::cout << "game over \n";
 }
 
 void Dino::onKeyDown(const KeyEventArgs& args)

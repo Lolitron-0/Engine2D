@@ -21,25 +21,33 @@ public:
 
 	void updateGlobalHitbox();
 
-	void systemResolve(Collidable& other);
+	void systemResolve(Collidable& other, const Rect<float>& intersection);
 
-	bool detect(const Collidable& other);
+	bool detect(const Collidable& other, Rect<float>& intersection);
 
 	virtual void resolve(Collidable& other) = 0;
 
+	bool isStatic();
 	int getLayer();
 	std::string getName();
-	bool isStatic();
 	//int getUserData();
 
 protected:
 	Rect<float> mLocalBox;
 	int mLayer;
-	int mStatic;
+	bool mStatic;
 	std::string mName;
 
 private:
+	enum class Side {
+		top,
+		right,
+		bottom,
+		left
+	};
+
 	void init(GameObject* );
+	Side determineCollisionSide(const Rect<float>& intersection);
 
 	Rect<float> mGlobalBox;
 	std::shared_ptr<GameObject> mpClient;
