@@ -1,9 +1,13 @@
 #include <iostream>
+#include <utility>
 #include <GLFW/glfw3.h>
 #include <EngineHeader.hpp>
 #include <Dino.hpp>
 #include <Floor.hpp>
 #include <Cactus.hpp>
+
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIGHT 500
 
 void errFun(int code, const char* desc)
 {
@@ -23,7 +27,8 @@ int main()
 
 	Dino dino(100, 0);
 	Cactus cactus(SCREEN_WIDTH - 200, 0);
-	Floor floor;
+	Floor floor(Rect<float>(0,SCREEN_HEIGHT*0.9,SCREEN_WIDTH, 100));
+	Window::getInstance().setSize(Vector2<int>(SCREEN_WIDTH, SCREEN_HEIGHT));
 
 	glLoadIdentity();
 	glOrtho(0, 1, 1, 0, -1, 1);

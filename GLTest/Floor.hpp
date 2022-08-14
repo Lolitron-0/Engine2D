@@ -1,12 +1,13 @@
 #pragma once
 #include <EngineHeader.hpp>
+#include <Window.hpp>
 
 class Floor : public GameObject, Collidable
 {
 public:
 
-	Floor() : GameObject(0, SCREEN_HEIGHT * 0.9), Collidable(this, { 0,0, SCREEN_WIDTH, 100 },true,0,"floor"),
-		mShape(mPosition.x, mPosition.y, SCREEN_WIDTH,100)
+	Floor(const Rect<float>& rect) : GameObject(rect.x, rect.y), Collidable(this, { 0,0, rect.width, rect.height },true,0,"floor"),
+		mShape(rect.x, rect.y, rect.width,rect.height)
 	{
 
 	}

@@ -9,12 +9,6 @@
 #include <GLFW/glfw3.h>
 
 
-#define SCREEN_WIDTH 1000
-#define SCREEN_HEIGHT 500
-
-
-
-
 template <typename T>
 class Rect
 {

@@ -49,7 +49,7 @@ Window::Window(GLint width, GLint height, const char* name) :
 }
 
 Window::Window()
-	:Window(SCREEN_WIDTH, SCREEN_HEIGHT, "window")
+	:Window(500, 500, "window")
 {
 }
 

@@ -170,6 +170,8 @@
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="PrimitiveShape.cpp" />
     <ClCompile Include="RectangleShape.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +194,8 @@
     <ClInclude Include="PhysicBody.hpp" />
     <ClInclude Include="PrimitiveShape.hpp" />
     <ClInclude Include="RectangleShape.hpp" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Texture.hpp" />
     <ClInclude Include="Utils.hpp" />
     <ClInclude Include="Vector2.hpp" />
     <ClInclude Include="Window.hpp" />
