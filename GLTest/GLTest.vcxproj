@@ -177,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="Cactus.hpp" />
     <ClInclude Include="CallbackDelegate.h" />
+    <ClInclude Include="Clock.hpp" />
     <ClInclude Include="Collidable.hpp" />
     <ClInclude Include="ColliderSystem.hpp" />
     <ClInclude Include="Color.hpp" />

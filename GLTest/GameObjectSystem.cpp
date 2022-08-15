@@ -5,7 +5,7 @@ void GameObjectSystem::processAll()
 {
 			mTimeKoeff = mIterationClock.elapsedMs();	
 			mIterationClock.restart();
-			mTimeKoeff /= 3;
+			mTimeKoeff /= 5;
 				
 			for (int i = 0; i < mObjects.size(); i++)
 			{
