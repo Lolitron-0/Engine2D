@@ -3,10 +3,10 @@
 #define UTILS_H
 
 #include <iostream>
-#include <Vector2.hpp>
+#include "Vector2.hpp"
 #include <algorithm>
 #include <cassert>
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
 
 template <typename T>
@@ -156,7 +156,7 @@ private:
 };
 
 template<typename T>
-typename T* Singleton<T>::instance = 0;
+T* Singleton<T>::instance = 0;
 
 
 

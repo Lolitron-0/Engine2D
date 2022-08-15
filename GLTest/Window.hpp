@@ -3,9 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include <Utils.hpp>
-#include <CallbackDelegate.h>
-#include <KeyListener.hpp>
+#include <memory>
+#include "Utils.hpp"
+#include "CallbackDelegate.h"
+#include "KeyListener.hpp"
 
 
 class Window : public Singleton<Window> //TODO

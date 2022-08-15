@@ -1,13 +1,17 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <ObjectSystemBase.hpp>
-#include <GameObject.hpp>
+#include "ObjectSystemBase.hpp"
+#include "GameObject.hpp"
+#include "Clock.hpp"
 
 class GameObjectSystem : public ObjectSystemBase<GameObject,GameObjectSystem>
 {
 public:
-	// Унаследовано через ObjectSystemBase
+	 
 	virtual void processAll() override;
+private:
+	float mTimeKoeff;
+	Clock mIterationClock;
 };
 

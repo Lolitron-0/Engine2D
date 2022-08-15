@@ -1,6 +1,6 @@
-#include <Collidable.hpp>
-#include <ColliderSystem.hpp>
-#include <Window.hpp>
+#include "Collidable.hpp"
+#include "ColliderSystem.hpp"
+#include "Window.hpp"
 
 
 Collidable::Collidable(GameObject* thisObject, const Rect<float>& box, bool isStatic, int layer, std::string name)
@@ -98,6 +98,7 @@ Collidable::Side Collidable::determineCollisionSide(const Rect<float>& intersect
 		else if (intersection.getTopRight().x == this->mGlobalBox.getTopRight().x)
 			return Side::right;
 	}
+	return Side::top; //default
 }
 
 //int Collidable::getUserData()

@@ -31,7 +31,6 @@ public:
 		return Vector2<T>(x, y+val);
 	}
 
-	template <class T>
 	Vector2<T>& operator=(const Vector2<T>& other)
 	{
 		Vector2 tmp(other);
@@ -41,7 +40,6 @@ public:
 	}
 
 
-	template <class T>
 	Vector2<T>& operator=(Vector2<T>&& other)
 	{
 		std::swap(other.x, this->x);

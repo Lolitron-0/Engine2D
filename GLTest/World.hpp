@@ -3,10 +3,10 @@
 #define WORLD_H
 
 #include <iostream>
-#include <Utils.hpp>
-#include <Vector2.hpp>
+#include "Utils.hpp"
+#include "Vector2.hpp"
 
-static class World
+class World
 {
 public:
 

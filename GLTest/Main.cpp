@@ -1,6 +1,7 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include <iostream>
 #include <utility>
-#include <GLFW/glfw3.h>
+#include <./Includes/GLFW/glfw3.h>
 #include <EngineHeader.hpp>
 #include <Dino.hpp>
 #include <Floor.hpp>

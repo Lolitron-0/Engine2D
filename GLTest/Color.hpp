@@ -1,10 +1,11 @@
 #pragma once
 #include <tuple>
 #include <limits>
+#include <cstdint>
 
 class Color {
 
-	typedef unsigned __int8 uint8;
+	typedef uint8_t  uint8;
 
 public:
 	Color(uint8 r, uint8 g, uint8 b, uint8 a = std::numeric_limits<uint8>::max())
