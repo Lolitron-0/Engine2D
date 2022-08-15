@@ -2,3 +2,6 @@
 x64/
 GLTest/x64/
 .vscode/
+*.o
+*~
+*.swp
