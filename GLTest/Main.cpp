@@ -29,10 +29,9 @@ int main()
 	glfwSetErrorCallback(errFun);
 
 	Dino dino(100, 0);
-	Cactus cactus(210, 0);
-	Sprite sp(0,0, 200,200,"./cactus.jpg");
+	Cactus cactus(SCREEN_WIDTH, 0);
 	Floor floor(Rect<float>(0,SCREEN_HEIGHT*0.9,SCREEN_WIDTH, 100));
-	Window::getInstance().setSize(Vector2<int>(SCREEN_WIDTH, SCREEN_HEIGHT));
+	Window::getInstance().setSize(Vector2<int>(SCREEN_WIDTH, SCREEN_HEIGHT)); //TODO: everything must recount glcoords idk how to (listener wtf)
 
 	glLoadIdentity();
 	glOrtho(0, 1, 1, 0, -1, 1);
@@ -55,7 +54,6 @@ int main()
 
 		dino.draw();
 		cactus.draw();
-		sp.draw();
 
 		floor.draw();
 

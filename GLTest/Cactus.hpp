@@ -16,7 +16,7 @@ public:
 
 private:
 
-	//Sprite mShape;
+	Sprite mShape;
 
 
 };
