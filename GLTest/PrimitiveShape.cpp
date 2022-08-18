@@ -3,7 +3,7 @@
 
 
 PrimitiveShape::PrimitiveShape(const Color& color, int pointCount)
-	:mColor(color), mGlVertices(pointCount * 2, 0.f)
+	:Shape(pointCount), mColor(color)
 {}
 
 void PrimitiveShape::setColor(const Color & color)

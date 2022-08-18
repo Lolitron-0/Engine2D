@@ -1,10 +1,10 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include "Vector2.hpp"
-#include <Utils.hpp>
+#include "Utils.hpp"
 #include <iostream>
 #include <vector>
-#include <PrimitiveShape.hpp>
+#include "PrimitiveShape.hpp"
 
 
 class RectangleShape : public PrimitiveShape

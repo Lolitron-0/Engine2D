@@ -12,6 +12,8 @@
 #include <PhysicBodySystem.hpp>
 #include <Window.hpp>
 #include <RectangleShape.hpp>
+#include <Sprite.hpp>
+#include <Texture.hpp>
 #include <Line.hpp>
 
 #endif

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Vector2.hpp"
 #include <algorithm>
+#include <vector>
 #include <cassert>
 #include "GLFW/glfw3.h"
 
@@ -84,6 +85,23 @@ public:
 			point.y >= y &&
 			point.y <= y + height;
 	}
+
+	/*std::vector<float> getGlCoords()
+	{
+				std::vector<float> vertices(8);	
+				vertices[0] = Window::getInstance().screenToGlX(this->mBounds.x);
+				vertices[1] = Window::getInstance().screenToGlY(this->mBounds.y);
+
+				vertices[2] = Window::getInstance().screenToGlX(this->mBounds.x + this->mBounds.width);
+				vertices[3] = Window::getInstance().screenToGlY(this->mBounds.y);
+
+				vertices[4] = Window::getInstance().screenToGlX(this->mBounds.x + this->mBounds.width);
+				vertices[5] = Window::getInstance().screenToGlY(this->mBounds.y + this->mBounds.height);
+
+				vertices[6] = Window::getInstance().screenToGlX(this->mBounds.x);
+				vertices[7] = Window::getInstance().screenToGlY(this->mBounds.y+this->mBounds.height);
+				return vertices;
+	}*/
 
 	T y;
 	T x;

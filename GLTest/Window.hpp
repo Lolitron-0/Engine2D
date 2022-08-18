@@ -45,7 +45,7 @@ public:
 	*/
 
 	//convert screen coords to gl coords (0..1)
-	template<class T> inline Vector2<T> screenToGl(Vector2<T>const& p) {
+	template<class T> Vector2<T> screenToGl(Vector2<T>const& p) {
 		return Vector2<T>(p.x / mWindowSize.x, p.y / mWindowSize.y);
 	}
 	//convert screen x to gl x (0..1)

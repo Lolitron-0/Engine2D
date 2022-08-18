@@ -10,6 +10,9 @@ class Texture
 {
 public: 
 	Texture(std::string source);
+
+	float* getTexCoordsPointer();
+	unsigned int getTextureHandle();
 private:
 	unsigned int mTextureHandle;
 	std::vector<float> mTexCoords = { 0,0, 1,0, 1,1, 0,1 };

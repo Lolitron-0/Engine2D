@@ -1,9 +1,10 @@
 #pragma once
-#include <Color.hpp>
+#include "Color.hpp"
+#include "Shape.hpp"
 #include <vector>
 
 
-class PrimitiveShape
+class PrimitiveShape : public Shape
 {
 public:
 	PrimitiveShape(const Color& color, int pointCount);
@@ -11,9 +12,8 @@ public:
 	void setColor(const Color& color);
 	Color getColor();
 
-	void draw();
+	void draw() override;
 protected:
 	Color mColor;
-	std::vector<float> mGlVertices;
 };
 

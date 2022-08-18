@@ -1,5 +1,5 @@
 #include "RectangleShape.hpp"
-#include <Window.hpp>
+#include "Window.hpp"
 
 
 RectangleShape::RectangleShape(float x, float y, float width, float height)

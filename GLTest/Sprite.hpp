@@ -3,13 +3,22 @@
 #include <iostream>
 #include <memory>
 #include "Texture.hpp"
+#include "Utils.hpp"
+#include "Shape.hpp"
 
-class Sprite
+class Sprite : public Shape
 {
-				public:
-								Sprite();
-								void setTexture();
-				private:
-								std::shared_ptr<Texture> mTexture;
+public:
+	Sprite(float x, float y, float width, float height, std::string source);
+	void setTexture(Texture);
+	void draw() override;
+private:
+	void recountGlCoords();
+
+	Texture mTexture;
+	Rect<float> mRect;
+
+
 };
+
 
