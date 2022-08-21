@@ -1,5 +1,6 @@
 #include "PhysicBody.hpp"
-#include <PhysicBodySystem.hpp>
+#include "PhysicBodySystem.hpp"
+#include "IterationTimer.hpp"
 
 PhysicBody::PhysicBody(GameObject* thisObject, float gravityY)
     :mGravity(0,gravityY), mFriction(0,0)
@@ -21,8 +22,8 @@ void PhysicBody::init(GameObject* thisObject)
 
 void PhysicBody::update()
 {
-    mpClient->setVelocity(mpClient->getVelocity() + this->mGravity);
-    mpClient->setVelocity(mpClient->getVelocity() * (1.f -this->mFriction));
+    mpClient->setVelocity(mpClient->getVelocity() + this->mGravity * IterationTimer::getInstance().getGameSpeedKoeff());
+    mpClient->setVelocity(mpClient->getVelocity() * (1.f -this->mFriction)); //TODO
 }
 
 

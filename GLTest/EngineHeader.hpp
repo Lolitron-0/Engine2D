@@ -3,6 +3,8 @@
 #define ENGINE_HEADER_H
 
 #include <Utils.hpp>
+#include "Clock.hpp"
+#include "IterationTimer.hpp"
 #include <GameObject.hpp>
 #include <Collidable.hpp>
 #include <PhysicBody.hpp>

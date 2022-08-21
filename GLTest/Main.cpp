@@ -54,6 +54,7 @@ int main()
 		floor.draw();
 
 		Window::getInstance().display();
+		IterationTimer::getInstance().reset();//must be in the end
 	}
 
 	glfwTerminate();

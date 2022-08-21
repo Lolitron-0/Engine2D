@@ -1,7 +1,7 @@
 #include "Dino.hpp"
 
 Dino::Dino(float x, float y)
-	:GameObject(x,y), PhysicBody(this, 0.08), Collidable(this,Rect<float>(0,0, 100,200),false,0,"dino"), KeyListener(),
+	:GameObject(x,y), PhysicBody(this, 10), Collidable(this,Rect<float>(0,0, 100,200),false,0,"dino"), KeyListener(),
 	mRect(x, y, 100, 200)
 {
 	this->mRect.setColor(Colors::green);
@@ -27,7 +27,7 @@ void Dino::onKeyDown(const KeyEventArgs& args)
 	case GLFW_KEY_SPACE:
 		if (mOnGround) 
 		{
-			mVelocity.y = -6;
+			mVelocity.y = -60;
 			mOnGround = false;
 		}
 		break;

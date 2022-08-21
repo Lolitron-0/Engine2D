@@ -6,10 +6,6 @@ Sprite::Sprite(float x, float y, float width, float height, std::string source)
 				:Shape(4), mTexture(source), mRect(x,y,width,height)
 {
 	recountGlCoords();
-	for(int i=0;i<8;i++)
-	{
-		std::cout<<mGlVertices[i]<<std::endl;
-	}
 }
 
 void Sprite::draw()
