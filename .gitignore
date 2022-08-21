@@ -1,6 +1,7 @@
 .vs/
 x64/
 GLTest/x64/
+GLTest/Debug/
 .vscode/
 *.o
 *~
