@@ -6,3 +6,5 @@ GLTest/Debug/
 *.o
 *~
 *.swp
+*.sln
+*.vcxproj*
