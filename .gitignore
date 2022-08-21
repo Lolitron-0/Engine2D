@@ -9,3 +9,5 @@ GLTest/Debug/
 *.sln
 *.vcxproj*
 *.vcxproj.*
+*.idb
+*.pdb

@@ -17,10 +17,6 @@ void errFun(int code, const char* desc)
 	std::cout << code << "     " << desc;
 }
 
-void initCallbacks(Window& window)
-{
-
-}
 
 int main()
 {
