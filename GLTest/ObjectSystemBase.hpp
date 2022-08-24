@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <Utils.hpp>
+#include "Utils.hpp"
 
 //We pass CRTP Derived class to create singleton instance of it (it is not abstract)
 template <class Object, class Derived>

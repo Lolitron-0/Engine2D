@@ -24,6 +24,8 @@ int main()
 
 	glfwSetErrorCallback(errFun);
 
+
+	UiWindow uiwindow(500,300);
 	Dino dino(100, 0);
 	Cactus cactus(SCREEN_WIDTH, 0);
 	Floor floor(Rect<float>(0,SCREEN_HEIGHT*0.9,SCREEN_WIDTH, 100));
@@ -52,6 +54,7 @@ int main()
 		cactus.draw();
 
 		floor.draw();
+		uiwindow.draw();
 
 		Window::getInstance().display();
 		IterationTimer::getInstance().reset();//must be in the end

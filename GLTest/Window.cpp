@@ -1,5 +1,4 @@
 #include "Window.hpp"
-#include "Utils.hpp"
 
 Window::Window(GLint width, GLint height, const char* name) :
 	mButtonsStates(GLFW_KEY_LAST + 1),mWindowSize(width,height)

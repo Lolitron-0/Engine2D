@@ -17,5 +17,6 @@
 #include <Sprite.hpp>
 #include <Texture.hpp>
 #include <Line.hpp>
+#include "../WindowSystem/UiWindow.hpp"
 
 #endif
