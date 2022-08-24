@@ -25,7 +25,7 @@ int main()
 	glfwSetErrorCallback(errFun);
 
 
-	UiWindow uiwindow(500,300);
+    UiWindow uiwindow(200,100);
 	Dino dino(100, 0);
 	Cactus cactus(SCREEN_WIDTH, 0);
 	Floor floor(Rect<float>(0,SCREEN_HEIGHT*0.9,SCREEN_WIDTH, 100));

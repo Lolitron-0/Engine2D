@@ -11,3 +11,4 @@ GLTest/Debug/
 *.vcxproj.*
 *.idb
 *.pdb
+*.user
