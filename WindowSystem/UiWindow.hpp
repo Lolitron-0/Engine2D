@@ -1,6 +1,6 @@
 #ifndef UI_WINDOW_HPP
 #define UI_WINDOW_HPP
-#include "../GLTest/RectangleShape.hpp"
+#include "../Utils/Sprite.hpp"
 
 
 enum class MouseActions
@@ -17,11 +17,10 @@ class UiWindow
 
 		bool onMouse(int key, MouseActions action, int x, int y);
 
-
 		void draw();
 
 	private:
-		RectangleShape mShape;
+        Sprite mBorder;
 };
 
 #endif

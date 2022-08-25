@@ -4,8 +4,9 @@ Texture::Texture(std::string source)
 {
 
 	int width, height, count;
-	unsigned char* data = stbi_load(source.data(), &width, &height, &count, 0);
-	glGenTextures(1, &mTextureHandle);
+    unsigned char* data = stbi_load(source.c_str(), &width, &height, &count, 0);
+    std::cout<<stbi_failure_reason()<<" "<<count<<std::endl;
+    glGenTextures(1, &mTextureHandle);
 		glBindTexture(GL_TEXTURE_2D, mTextureHandle);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);

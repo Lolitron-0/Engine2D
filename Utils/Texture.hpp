@@ -3,7 +3,7 @@
 #define TEXTURE_HPP
 #include <iostream>
 #include <GLFW/glfw3.h>
-#include "./Includes/stb_image.h"
+#include "./stb_image.h"
 #include <vector>
 
 class Texture

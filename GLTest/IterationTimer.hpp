@@ -1,7 +1,7 @@
 #ifndef ITERATION_TIMER_HPP
 #define ITERATION_TIMER_HPP
-#include "Utils.hpp"
-#include "Clock.hpp"
+#include "../Utils/Utils.hpp"
+#include "../Utils/Clock.hpp"
 
 class IterationTimer : public Singleton<IterationTimer>
 {

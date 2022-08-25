@@ -22,6 +22,7 @@ include_directories(
     GLTest
     GLTest/Includes
     GLTest/Includes/GLFW
+    Resources
     ${OPENGL_INCLUDE_DIRS}
 )
 
@@ -32,12 +33,10 @@ set (SRCS
     GLTest/Cactus.cpp
     GLTest/Cactus.hpp
     GLTest/CallbackDelegate.h
-    GLTest/Clock.hpp
     GLTest/Collidable.cpp
     GLTest/Collidable.hpp
     GLTest/ColliderSystem.cpp
     GLTest/ColliderSystem.hpp
-    GLTest/Color.hpp
     GLTest/Defines.hpp
     GLTest/Dino.cpp
     GLTest/Dino.hpp
@@ -51,33 +50,53 @@ set (SRCS
     GLTest/IterationTimer.hpp
     GLTest/KeyListener.cpp
     GLTest/KeyListener.hpp
-    GLTest/Line.cpp
-    GLTest/Line.hpp
     GLTest/Main.cpp
     GLTest/ObjectSystemBase.hpp
     GLTest/PhysicBody.cpp
     GLTest/PhysicBody.hpp
     GLTest/PhysicBodySystem.cpp
     GLTest/PhysicBodySystem.hpp
-    GLTest/PrimitiveShape.cpp
-    GLTest/PrimitiveShape.hpp
     GLTest/Program.hpp
-    GLTest/RectangleShape.cpp
-    GLTest/RectangleShape.hpp
-    GLTest/Shape.hpp
-    GLTest/Sprite.cpp
-    GLTest/Sprite.hpp
-    GLTest/Texture.cpp
-    GLTest/Texture.hpp
-    GLTest/Utils.hpp
-    GLTest/Vector2.hpp
     GLTest/Window.cpp
     GLTest/Window.hpp
     WindowSystem/UiWindow.cpp
     WindowSystem/UiWindow.hpp
+    Utils/Clock.hpp
+    Utils/Utils.hpp
+    Utils/Vector2.hpp
+    Utils/Texture.cpp
+    Utils/Texture.hpp
+    Utils/RectangleShape.cpp
+    Utils//RectangleShape.hpp
+    Utils/Shape.hpp
+    Utils/Sprite.cpp
+    Utils/Sprite.hpp
+    Utils/Line.cpp
+    Utils/Line.hpp
+    Utils/PrimitiveShape.cpp
+    Utils/PrimitiveShape.hpp
+    Utils/Color.hpp
 )
 
-add_executable(${CMAKE_PROJECT_NAME} ${SRCS})
+set(RESOURCES
+    Resources/border.png
+    Resources/cactus.jpg
+)
+
+file(COPY Resources DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+
+#foreach(item IN LISTS RESOURCES)
+#    add_custom_command(
+#                OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${item}"
+#                COMMAND ${CMAKE_COMMAND} -E copy "${item}" "${CMAKE_CURRENT_BINARY_DIR}/${item}"
+#                DEPENDS "${item}"
+#           )
+#endforeach()
+
+add_executable(${CMAKE_PROJECT_NAME}
+    ${SRCS}
+    )
+
 
 target_link_libraries(${CMAKE_PROJECT_NAME} glfw)
 target_link_libraries(${CMAKE_PROJECT_NAME} OpenGL::GL)

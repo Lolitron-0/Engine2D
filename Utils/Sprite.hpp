@@ -2,9 +2,9 @@
 #pragma once
 #include <iostream>
 #include <memory>
-#include "Texture.hpp"
-#include "Utils.hpp"
-#include "Shape.hpp"
+#include "../Utils/Texture.hpp"
+#include "../Utils/Utils.hpp"
+#include "../Utils/Shape.hpp"
 
 class Sprite : public Shape
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector2.hpp"
+#include "../Utils/Vector2.hpp"
 #include "Defines.hpp"
 
 HAS_SYSTEM(GameObjectSystem)

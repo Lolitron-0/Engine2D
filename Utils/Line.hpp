@@ -1,9 +1,9 @@
 #pragma once
 #include <GLFW/glfw3.h>
-#include "Vector2.hpp"
-#include "Utils.hpp"
+#include "../Utils/Vector2.hpp"
+#include "../Utils/Utils.hpp"
+#include "../Utils/PrimitiveShape.hpp"
 #include <vector>
-#include <PrimitiveShape.hpp>
 #include <tuple>
 
 class Line : public PrimitiveShape

@@ -1,12 +1,12 @@
 #include "UiWindow.hpp"
 
 UiWindow::UiWindow(int w,int h)
-	:mShape(0,0,w,h)
+    :mBorder(0,0,w,h,"Resources/border.png")
 {
 
 }
 
 void UiWindow::draw()
 {
-	mShape.draw();
+    mBorder.draw();
 }
