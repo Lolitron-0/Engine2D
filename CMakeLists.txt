@@ -83,15 +83,17 @@ set(RESOURCES
     Resources/cactus.jpg
 )
 
-file(COPY Resources DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+#file(COPY Resources DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
 
-#foreach(item IN LISTS RESOURCES)
-#    add_custom_command(
-#                OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${item}"
-#                COMMAND ${CMAKE_COMMAND} -E copy "${item}" "${CMAKE_CURRENT_BINARY_DIR}/${item}"
-#                DEPENDS "${item}"
-#           )
-#endforeach()
+foreach(item IN LISTS RESOURCES)
+    add_custom_command(
+                OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${item}"
+                COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/${item}" "${CMAKE_CURRENT_BINARY_DIR}/${item}"
+                DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/${item}"
+           )
+endforeach()
+
+add_custom_target(data-target ALL DEPENDS ${RESOURCES})
 
 add_executable(${CMAKE_PROJECT_NAME}
     ${SRCS}
