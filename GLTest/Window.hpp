@@ -6,20 +6,11 @@
 #include <memory>
 #include "../Utils/Utils.hpp"
 #include "CallbackDelegate.h"
-#include "KeyListener.hpp"
+#include "EventListener.hpp"
 
 
 class Window : public Singleton<Window> //TODO
 {
-private:
-	class Button
-	{
-	public:
-		Button(){}
-
-		bool isPressed = false;
-	};
-
 public:
 
 	~Window() = default;
@@ -32,7 +23,7 @@ public:
 	void setSize(const Vector2<int>&);
 	Vector2<int> getSize();
 
-	void addKeyListener(KeyListener*);
+    void addListener(EventListener*);
 
 	/*
 	//methods to add callbacks to some events
@@ -62,9 +53,9 @@ private:
 	Window(GLint width, GLint height, const char* name);
 
 	CallbackDelegate<GLFWwindow*,int,int,int,int> keyDeleagte;
-	std::vector<Button> mButtonsStates;//to store codes 0..last+1
 	std::shared_ptr<GLFWwindow> mpWindowHandle;
 	Vector2<int> mWindowSize;
-	std::vector<std::shared_ptr<KeyListener>> mKeyListeners;
+    Vector2<int> mCursorPos;
+    std::vector<std::shared_ptr<EventListener>> mListeners;
 
 };

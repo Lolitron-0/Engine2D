@@ -26,10 +26,11 @@ int main()
 
 
 	Dino dino(100, 0);
-    UiWindow uiwindow(200,100);
 	Cactus cactus(SCREEN_WIDTH, 0);
     Floor floor(Rect<float>(0,SCREEN_HEIGHT*0.9,SCREEN_WIDTH, 100));
 	Window::getInstance().setSize(Vector2<int>(SCREEN_WIDTH, SCREEN_HEIGHT)); //TODO: everything must recount glcoords idk how to (listener wtf)
+    ui::UiSystem uiSystem(Window::getInstance());
+    uiSystem.createWindow(Vector2<int>(), Vector2(200,100));
 
 	glLoadIdentity();
 	glOrtho(0, 1, 1, 0, -1, 1);
@@ -54,7 +55,7 @@ int main()
 		cactus.draw();
 
 		floor.draw();
-		uiwindow.draw();
+        uiSystem.draw();
 
 		Window::getInstance().display();
 		IterationTimer::getInstance().reset();//must be in the end

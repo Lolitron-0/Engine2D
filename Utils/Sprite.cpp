@@ -2,7 +2,7 @@
 #include "Window.hpp"
 
 
-Sprite::Sprite(float x, float y, float width, float height, std::string source)
+Sprite::Sprite(PixelType x, PixelType y, PixelType width, PixelType height, std::string source)
 				:Shape(4), mTexture(source), mRect(x,y,width,height)
 {
 	recountGlCoords();
@@ -24,11 +24,16 @@ void Sprite::draw()
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Sprite::setPosition(const Vector2<float>& pos)
+void Sprite::setPosition(const Vector2<PixelType>& pos)
 {
 	this->mRect.x = pos.x;
 	this->mRect.y = pos.y;
 	recountGlCoords();
+}
+
+Rect<Sprite::PixelType> Sprite::getRect()
+{
+    return mRect;
 }
 
 void Sprite::recountGlCoords()

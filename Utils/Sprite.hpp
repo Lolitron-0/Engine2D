@@ -8,16 +8,19 @@
 
 class Sprite : public Shape
 {
+    typedef int PixelType;
 public:
-	Sprite(float x, float y, float width, float height, std::string source);
+    Sprite(PixelType x, PixelType y, PixelType width, PixelType height, std::string source);
 	void setTexture(Texture);
-	void setPosition(const Vector2<float>&);
+    void setPosition(const Vector2<PixelType>&);
 	void draw() override;
+
+    Rect<PixelType> getRect();
 private:
 	void recountGlCoords();
 
 	Texture mTexture;
-	Rect<float> mRect;
+    Rect<PixelType> mRect;
 
 
 };

@@ -1,7 +1,7 @@
 #include "Window.hpp"
 
 Window::Window(GLint width, GLint height, const char* name) :
-	mButtonsStates(GLFW_KEY_LAST + 1),mWindowSize(width,height)
+    mWindowSize(width,height)
 {
 	this->mpWindowHandle.reset(
 		glfwCreateWindow(width, height, name, NULL, NULL), //new value
@@ -20,6 +20,37 @@ Window::Window(GLint width, GLint height, const char* name) :
 	});
 	*/
 
+    glfwSetCursorPosCallback(mpWindowHandle.get(),[](GLFWwindow* window, double x, double y){
+        Window* thisPtr = static_cast<Window*>(glfwGetWindowUserPointer(window));
+
+        thisPtr->mCursorPos = {(int)x,(int)y};
+
+        Event event(Event::EventType::MouseMove);
+        event.mouseMove = {(int)x,(int)y};
+
+        for(int i=0;i<thisPtr->mListeners.size();i++)
+        {
+            thisPtr->mListeners[i]->handle(event);
+        }
+    });
+
+    glfwSetMouseButtonCallback(mpWindowHandle.get(), [](GLFWwindow* window, int button, int action, int mods){
+        Window* thisPtr = static_cast<Window*>(glfwGetWindowUserPointer(window));
+
+        Event event;
+        if(action == GLFW_PRESS)
+            event.type = Event::EventType::MouseDown;
+        else
+            event.type = Event::EventType::MouseUp;
+
+        event.mouseButton = {button, thisPtr->mCursorPos.x, thisPtr->mCursorPos.y};
+
+        for(int i=0;i<thisPtr->mListeners.size();i++)
+        {
+            thisPtr->mListeners[i]->handle(event);
+        }
+    });
+
 	glfwSetKeyCallback(this->mpWindowHandle.get(), [](GLFWwindow* window, int key, int scan, int action, int mods) {
 
 		//we dont want to process it yet
@@ -27,16 +58,19 @@ Window::Window(GLint width, GLint height, const char* name) :
 
 
 		//extract pointer to [this]
-		Window* thisPtr = static_cast<Window*>(glfwGetWindowUserPointer(window));
-		thisPtr->mButtonsStates[key].isPressed = (action == GLFW_PRESS);
+        Window* thisPtr = static_cast<Window*>(glfwGetWindowUserPointer(window));
+        Event event;
+        if (action == GLFW_PRESS)
+            event.type = Event::EventType::KeyDown;
+        else
+            event.type = Event::EventType::KeyUp;
 
-		for (int i = 0; i < thisPtr->mKeyListeners.size(); i++)
+        event.key = {key,mods};
+
+        for (int i = 0; i < thisPtr->mListeners.size(); i++)
 		{
-			if (action == GLFW_PRESS)
-				thisPtr->mKeyListeners[i]->onKeyDown({ key, mods });
-			else
-				thisPtr->mKeyListeners[i]->onKeyUp({key, mods});
-		}
+            thisPtr->mListeners[i]->handle(event);
+        }
 
 		thisPtr->keyDeleagte.callAll(window,key,scan,action,mods);
 	});
@@ -68,9 +102,9 @@ Vector2<int> Window::getSize()
 	return mWindowSize;
 }
 
-void Window::addKeyListener(KeyListener* listener)
+void Window::addListener(EventListener* listener)
 {
-	mKeyListeners.push_back(std::shared_ptr<KeyListener>(listener));
+    mListeners.push_back(std::shared_ptr<EventListener>(listener));
 }
 
 void Window::display()

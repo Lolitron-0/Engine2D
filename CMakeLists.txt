@@ -22,6 +22,8 @@ include_directories(
     GLTest
     GLTest/Includes
     GLTest/Includes/GLFW
+    Utils
+    WindowSystem
     Resources
     ${OPENGL_INCLUDE_DIRS}
 )
@@ -41,6 +43,8 @@ set (SRCS
     GLTest/Dino.cpp
     GLTest/Dino.hpp
     GLTest/EngineHeader.hpp
+    GLTest/EventListener.hpp
+    GLTest/EventListener.cpp
     GLTest/Floor.cpp
     GLTest/Floor.hpp
     GLTest/GameObject.cpp
@@ -48,8 +52,6 @@ set (SRCS
     GLTest/GameObjectSystem.cpp
     GLTest/GameObjectSystem.hpp
     GLTest/IterationTimer.hpp
-    GLTest/KeyListener.cpp
-    GLTest/KeyListener.hpp
     GLTest/Main.cpp
     GLTest/ObjectSystemBase.hpp
     GLTest/PhysicBody.cpp
@@ -61,6 +63,9 @@ set (SRCS
     GLTest/Window.hpp
     WindowSystem/UiWindow.cpp
     WindowSystem/UiWindow.hpp
+    WindowSystem/UiObject.hpp
+    WindowSystem/UiSystem.hpp
+    WindowSystem/UiSystem.cpp
     Utils/Clock.hpp
     Utils/Utils.hpp
     Utils/Vector2.hpp
@@ -76,6 +81,7 @@ set (SRCS
     Utils/PrimitiveShape.cpp
     Utils/PrimitiveShape.hpp
     Utils/Color.hpp
+    Utils/Event.hpp
 )
 
 set(RESOURCES

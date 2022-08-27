@@ -1,26 +1,26 @@
 #ifndef UI_WINDOW_HPP
 #define UI_WINDOW_HPP
 #include "../Utils/Sprite.hpp"
+#include "UiObject.hpp"
 
-
-enum class MouseActions
+namespace ui
 {
-	MouseDown,
-	MouseUp,
-	MouseMove
-};
 
-class UiWindow 
-{
-	public:
-		UiWindow(int w, int h);
+    class UiWindow : public UiObject
+    {
+        public:
+            UiWindow(int w, int h);
 
-		bool onMouse(int key, MouseActions action, int x, int y);
+            bool processEvent(const Event&) override;
 
-		void draw();
+            void draw() override;
 
-	private:
-        Sprite mBorder;
-};
+        private:
+            Sprite mBorder;
+            bool mGrabbed;
+            Vector2<int> mGrabOffset;
+    };
+
+}
 
 #endif

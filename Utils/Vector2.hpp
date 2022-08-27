@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <utility>
+#include <memory>
 
 template<class T> class Vector2
 {
@@ -30,6 +32,11 @@ public:
 	{
 		return Vector2<T>(x, y+val);
 	}
+    template<class U>
+    Vector2<U> to() const
+    {
+        return Vector2<U>(static_cast<U>(x),static_cast<U>(y));
+    }
 
 	Vector2<T>& operator=(const Vector2<T>& other)
 	{

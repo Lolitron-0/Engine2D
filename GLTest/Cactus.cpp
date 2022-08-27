@@ -13,7 +13,7 @@ void Cactus::draw()
 
 void Cactus::update()
 {
-	mShape.setPosition(mPosition);
+    mShape.setPosition(mPosition.to<int>());
 	mVelocity.x = -70;
 }
 
