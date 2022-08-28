@@ -75,10 +75,16 @@ Window::Window(GLint width, GLint height, const char* name) :
 		thisPtr->keyDeleagte.callAll(window,key,scan,action,mods);
 	});
 
-	glfwSetWindowSizeCallback(this->mpWindowHandle.get(), [](GLFWwindow*, int w, int h) 
+    glfwSetWindowSizeCallback(this->mpWindowHandle.get(), [](GLFWwindow* window, int w, int h)
 	{
-		glViewport(0, 0, w, h);
-	});
+        Window* thisPtr = static_cast<Window*>(glfwGetWindowUserPointer(window));
+        thisPtr->mWindowSize = Vector2(w,h);
+        glViewport(0, 0, w, h);
+
+        Event event(Event::EventType::ResizeWindow);
+        for (int i = 0; i < thisPtr->mListeners.size(); i++)
+            thisPtr->mListeners[i]->handle(event);
+    });
 }
 
 Window::Window()
@@ -94,7 +100,6 @@ bool Window::isOpen()
 void Window::setSize(const Vector2<int>& size)
 {
 	glfwSetWindowSize(mpWindowHandle.get(), size.x, size.y);
-	mWindowSize = size;
 }
 
 Vector2<int> Window::getSize()

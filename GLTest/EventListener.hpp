@@ -2,12 +2,11 @@
 #define EVENTLISTENER_HPP
 #include "../Utils/Event.hpp"
 
-class Window;
 
 class EventListener
 {
 public:
-    EventListener(Window&);
+    EventListener();
 
     virtual void handle(const Event&) = 0;
 private:

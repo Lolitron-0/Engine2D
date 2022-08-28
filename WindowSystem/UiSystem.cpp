@@ -3,8 +3,8 @@
 
 namespace ui {
 
-UiSystem::UiSystem(Window& w)
-    :EventListener(w)
+UiSystem::UiSystem()
+    :EventListener()
 {
 
 }

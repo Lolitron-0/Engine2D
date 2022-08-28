@@ -1,7 +1,7 @@
 #include "Dino.hpp"
 
 Dino::Dino(float x, float y)
-    :GameObject(x,y), PhysicBody(this, 10), Collidable(this,Rect<float>(0,0, 100,200),false,0,"dino"), EventListener(Window::getInstance()),
+    :GameObject(x,y), PhysicBody(this, 10), Collidable(this,Rect<float>(0,0, 100,200),false,0,"dino"), EventListener(),
 	mRect(x, y, 100, 200)
 {
 	this->mRect.setColor(Colors::green);

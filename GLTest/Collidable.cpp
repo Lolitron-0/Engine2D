@@ -20,15 +20,6 @@ void Collidable::updateGlobalHitbox()
 
 void Collidable::systemResolve(Collidable& other, const Rect<float>& intersection)
 {
-	
-	glBegin(GL_TRIANGLE_FAN);
-		glColor3ub(255,255,255);
-		glVertex2f(Window::getInstance().screenToGlX(intersection.x), Window::getInstance().screenToGlY(intersection.y));
-		glVertex2f(Window::getInstance().screenToGlX(intersection.x+ intersection.width), Window::getInstance().screenToGlY(intersection.y));
-		glVertex2f(Window::getInstance().screenToGlX(intersection.x+ intersection.width), Window::getInstance().screenToGlY(intersection.y + intersection.height));
-		glVertex2f(Window::getInstance().screenToGlX(intersection.x), Window::getInstance().screenToGlY(intersection.y + intersection.height));
-	glEnd();
-
 	switch (determineCollisionSide(intersection))
 	{
 	case Side::bottom:

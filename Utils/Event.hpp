@@ -11,7 +11,8 @@ public:
         MouseUp,
         MouseMove,
         KeyDown,
-        KeyUp
+        KeyUp,
+        ResizeWindow
     };
 
     struct KeyboardEvent
@@ -36,6 +37,12 @@ public:
         int y;
     };
 
+    struct ResizeWindowEvent
+    {
+        int w;
+        int h;
+    };
+
     Event(EventType t)
         :type(t)
     {}
@@ -48,6 +55,7 @@ public:
       KeyboardEvent key;
       MouseButtonEvent mouseButton;
       MouseMoveEvent mouseMove;
+      ResizeWindowEvent resize;
     };
 };
 

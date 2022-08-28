@@ -1,7 +1,7 @@
 #include "EventListener.hpp"
 #include "Window.hpp"
 
-EventListener::EventListener(Window& window)
+EventListener::EventListener()
 {
-    window.addListener(this);
+    Window::getInstance().addListener(this);
 }

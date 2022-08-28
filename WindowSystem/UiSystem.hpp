@@ -9,7 +9,7 @@ namespace ui {
 class UiSystem : public UiObject, EventListener
 {
 public:
-    UiSystem(Window&);
+    UiSystem();
 
     void createWindow(const Vector2<int>& position, const Vector2<int>& size);
 

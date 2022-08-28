@@ -17,7 +17,7 @@ public:
 
     Rect<PixelType> getRect();
 private:
-	void recountGlCoords();
+    void recountGlCoords() override;
 
 	Texture mTexture;
     Rect<PixelType> mRect;

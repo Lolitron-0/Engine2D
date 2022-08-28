@@ -28,14 +28,14 @@ int main()
 	Dino dino(100, 0);
 	Cactus cactus(SCREEN_WIDTH, 0);
     Floor floor(Rect<float>(0,SCREEN_HEIGHT*0.9,SCREEN_WIDTH, 100));
-	Window::getInstance().setSize(Vector2<int>(SCREEN_WIDTH, SCREEN_HEIGHT)); //TODO: everything must recount glcoords idk how to (listener wtf)
-    ui::UiSystem uiSystem(Window::getInstance());
+    ui::UiSystem uiSystem;
     uiSystem.createWindow(Vector2<int>(), Vector2(200,100));
 
-	glLoadIdentity();
-	glOrtho(0, 1, 1, 0, -1, 1);
+    glLoadIdentity();
+    glOrtho(0, 1, 1, 0, -1, 1);
 
-	//std::shared_ptr<Window> window(new Window(SCREEN_WIDTH, SCREEN_HEIGHT, "awd"));
+    Window::getInstance().setSize(Vector2<int>(SCREEN_WIDTH, SCREEN_HEIGHT)); //TODO: everything must recount glcoords idk how to (listener wtf)
+    //std::shared_ptr<Window> window(new Window(SCREEN_WIDTH, SCREEN_HEIGHT, "awd"));
 
 	while (Window::getInstance().isOpen())
 	{
@@ -51,10 +51,10 @@ int main()
 		PhysicBodySystem::getInstance().processAll();
 		ColliderSystem::getInstance().processAll();
 
-		dino.draw();
-		cactus.draw();
+        dino.draw();
+        cactus.draw();
 
-		floor.draw();
+        floor.draw();
         uiSystem.draw();
 
 		Window::getInstance().display();
