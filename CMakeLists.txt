@@ -21,7 +21,6 @@ find_package(OpenGL REQUIRED)
 include_directories(
     GLTest
     GLTest/Includes
-    GLTest/Includes/GLFW
     Utils
     WindowSystem
     Resources

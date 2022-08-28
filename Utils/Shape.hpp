@@ -6,6 +6,7 @@
 #include "EventListener.hpp"
 #include "Window.hpp"
 
+
 class Shape : public EventListener
 {
 public:
